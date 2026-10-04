@@ -3,14 +3,16 @@ id: 16
 uid: 35a6a5ad-bc43-4665-a090-bed7e1ad8e2f
 title: './laporte verify: the harness, and checks that are allowed to fail'
 type: instrument
-status: planned
+status: done
 milestone: v0.1
+assignee: Oddur Sigurdsson
 labels:
 - foundation
 depends_on:
 - 11
 created: 2026-10-03
 updated: 2026-10-03
+closed_at: 2026-10-03
 priority: p0
 role: systems
 area: verification
@@ -45,6 +47,18 @@ branches adding checks conflict on one line or not at all.
 
 ## Acceptance criteria
 
-- [ ] `./laporte verify` runs, and `./laporte verify <name>` runs one check
-- [ ] Expected-failure and unexpected-pass both behave as described
-- [ ] Adding a check touches one new file and one line
+- [x] `./laporte verify` runs, and `./laporte verify <name>` runs one check
+- [x] Expected-failure and unexpected-pass both behave as described
+- [x] Adding a check touches one new file and one line
+
+## 2026-10-03
+
+Claimed with --force (0011 scaffolding already present). Harness in apps/verify.hpp; checks self-register by defining an inline bool at namespace scope, so a new check is one file plus one #include line in apps/checks/registry.hpp. judge() is pure and its four verdicts (pass, fail, expected-fail, unexpected-pass) are static_assert'd, since a permanently-failing check cannot be registered to exercise the last path at run time. Exit: failures clamped to 255; 127 for an unknown check name. selftest.pass and selftest.xfail (until item 9999, which does not exist) exercise the run-time paths. main.cpp is edited at the top (includes) and dispatch; PR for 0015 also adds one include line near the std includes, kept on different lines so the rebase is clean.
+
+## 2026-10-03
+
+Returned: run_one now has one return shared by the loud and quiet paths, and the full run calls it on a stale marker, an honest xfail, a pass and a fail built outside the registry (harness.counts). Mutating run_one to ignore stale markers now turns the run red; confirmed. Selftests cite 'selftest', not S00. Header notes the 127 ambiguity, unvalidated tolerance, and registry append conflicts.
+
+## Result
+
+./laporte verify: one check per file, one registry line, expected-failure and stale-marker paths exercised at run time. Inspector PASS after one return.
