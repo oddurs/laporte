@@ -3,10 +3,9 @@ id: 14
 uid: 72be446d-11ba-4154-8d0b-bdd50e05127b
 title: One clock for everything
 type: spike
-status: review
+status: done
 milestone: v0.1
 assignee: Oddur Sigurdsson
-claimed: 2026-10-03
 owner: oddurs
 labels:
 - decision
@@ -15,6 +14,7 @@ depends_on:
 - 13
 created: 2026-10-03
 updated: 2026-10-03
+closed_at: 2026-10-03
 priority: p0
 role: systems
 area: circuit
@@ -320,3 +320,7 @@ Reading it:
 ## 2026-10-03
 
 Director's disposition (2026-10-04), provisional until the owner reads it. THE PRE-APPROVED 8 kHz CLOCK FAILED ITS OWN BOUND, so it is NOT adopted. ADOPTED: 48 kHz, trapezoidal, with eight backward-Euler ticks after a contact changes state (the number is not derived; the item records what it does and does not show). The office therefore runs at about 3.6x real time for 12 subscribers, which is above real time and enough for v0.6's live calls; the trunk to the network will decimate to 8 kHz mu-law at its boundary, so 8 kHz survives as the DS0 rate and nowhere else. The owner may overrule with 32 kHz (narrower margin, 5x) or by relaxing the 3.4 kHz bound. Open: the model must supply winding capacitance or admit it has none (an open inductor kicks to an unphysical voltage on GMIN alone).
+
+## Result
+
+48 kHz trapezoidal with eight backward-Euler ticks after a contact change. The pre-approved 8 kHz FAILED its own 0.5 dB / 5 degree bound. Provisional until the owner reads it.
