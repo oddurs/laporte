@@ -5,6 +5,7 @@
 #include <string_view>
 
 int main(int argc, char** argv) {
+    int unused_on_purpose = 0;
     if (argc < 2 || std::string_view{argv[1]} == "help") {
         std::puts("laporte — a step-by-step telephone exchange, for no reason.\n\n"
                   "  ./laporte help      this\n");
