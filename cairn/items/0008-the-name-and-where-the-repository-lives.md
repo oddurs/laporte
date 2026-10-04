@@ -3,14 +3,16 @@ id: 8
 uid: e704a1d5-ef21-4b3d-b69c-a5b5bef666fc
 title: The name, and where the repository lives
 type: spike
-status: planned
+status: done
 milestone: v0.1
+assignee: Oddur Sigurdsson
 owner: oddurs
 labels:
 - decision
 - foundation
 created: 2026-10-03
 updated: 2026-10-03
+closed_at: 2026-10-03
 priority: p0
 role: systems
 area: build
@@ -47,3 +49,7 @@ repository is outward-facing and is the owner's call.
 The owner says so.
 
 ## Answer
+
+## 2026-10-03
+
+Answer: laporte. Repository: github.com/oddurs/laporte, public, created 2026-10-04 on the owner's instruction ("bootstrap public repo on github"). Rebase-merge only, branches deleted on merge.

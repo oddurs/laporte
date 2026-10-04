@@ -32,16 +32,13 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`··········` 0% · 0 of 26 done
+`#·········` 8% · 2 of 26 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
 ### planned
 
-- [ ] `0008` The name, and where the repository lives <sup>spike · p0 · systems · build · decision · foundation</sup>
-- [ ] `0009` The year the office stands in <sup>spike · p0 · systems · verification · decision · foundation</sup>
 - [ ] `0010` The numbers we will be judged against <sup>spike · p0 · test · verification · decision · foundation</sup>
-- [ ] `0011` The repository, the build, and the two gates <sup>chore · p0 · systems · build · foundation</sup>
 - [ ] `0012` The departments, as agent definitions <sup>chore · p0 · systems · build · foundation</sup>
 - [ ] `0013` How the office is solved <sup>spike · p0 · systems · circuit · decision · foundation · thesis</sup>
 - [ ] `0014` One clock for everything <sup>spike · p0 · systems · circuit · decision · foundation</sup>
@@ -64,6 +61,15 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [ ] `0031` ./laporte loop: the operating margin of a line <sup>instrument · p1 · switching · instrument · derivation</sup>
 - [ ] `0032` The README at v0.1: the argument, and the first derived figure <sup>prose · p1 · writer · prose</sup>
 - [ ] `0033` v0.1, read as a stranger <sup>verify · p0 · inspector · verification</sup>
+
+### in progress
+
+- [ ] `0011` The repository, the build, and the two gates <sup>chore · p0 · systems · build · foundation</sup>
+
+### done
+
+- [x] `0008` The name, and where the repository lives <sup>spike · p0 · systems · build · decision · foundation</sup>
+- [x] `0009` The year the office stands in <sup>spike · p0 · systems · verification · decision · foundation</sup>
 
 ## v0.2 — Ten pulses a second
 
