@@ -32,7 +32,7 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`##········` 15% · 4 of 26 done
+`##········` 19% · 5 of 26 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
@@ -41,7 +41,6 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [ ] `0010` The numbers we will be judged against <sup>spike · p0 · test · verification · decision · foundation</sup>
 - [ ] `0013` How the office is solved <sup>spike · p0 · systems · circuit · decision · foundation · thesis</sup>
 - [ ] `0014` One clock for everything <sup>spike · p0 · systems · circuit · decision · foundation</sup>
-- [ ] `0015` units.hpp: the dictionary of what this program will accept <sup>apparatus · p0 · systems · units · foundation</sup>
 - [ ] `0016` ./laporte verify: the harness, and checks that are allowed to fail <sup>instrument · p0 · systems · verification · foundation</sup>
 - [ ] `0017` Kirchhoff, checked against circuits whose answers are known <sup>verify · p0 · test · verification · foundation</sup>
 - [ ] `0018` Determinism: the same office twice, in any order <sup>verify · p1 · test · verification · foundation</sup>
@@ -67,6 +66,7 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [x] `0009` The year the office stands in <sup>spike · p0 · systems · verification · decision · foundation</sup>
 - [x] `0011` The repository, the build, and the two gates <sup>chore · p0 · systems · build · foundation</sup>
 - [x] `0012` The departments, as agent definitions <sup>chore · p0 · systems · build · foundation</sup>
+- [x] `0015` units.hpp: the dictionary of what this program will accept <sup>apparatus · p0 · systems · units · foundation</sup>
 
 ## v0.2 — Ten pulses a second
 
