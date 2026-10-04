@@ -32,7 +32,7 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`#####·····` 50% · 14 of 28 done
+`######····` 54% · 15 of 28 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
@@ -52,10 +52,6 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [ ] `0109` circuits.hpp: the ring bound proves 'at least 5 ticks', not 8, and the header misquotes its own figures <sup>bug · p2 · test · verification</sup>
 - [ ] `0110` kirchhoff.hpp: label gmin and tick_rate as model parameters, stop a singular solve poisoning history, refuse zero element values <sup>bug · p2 · systems · circuit</sup>
 
-### in review
-
-- [ ] `0019` kirchhoff.hpp: the office is one netlist <sup>apparatus · p0 · systems · circuit · foundation · thesis</sup>
-
 ### done
 
 - [x] `0008` The name, and where the repository lives <sup>spike · p0 · systems · build · decision · foundation</sup>
@@ -69,6 +65,7 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [x] `0016` ./laporte verify: the harness, and checks that are allowed to fail <sup>instrument · p0 · systems · verification · foundation</sup>
 - [x] `0017` Kirchhoff, checked against circuits whose answers are known <sup>verify · p0 · test · verification · foundation</sup>
 - [x] `0018` Determinism: the same office twice, in any order <sup>verify · p1 · test · verification · foundation</sup>
+- [x] `0019` kirchhoff.hpp: the office is one netlist <sup>apparatus · p0 · systems · circuit · foundation · thesis</sup>
 - [x] `0022` Copper, derived from resistivity and checked against the published table <sup>verify · p1 · test · verification · derivation</sup>
 - [x] `0024` The relay operates and releases where its own numbers say it should <sup>verify · p1 · test · verification</sup>
 - [x] `0030` How far from the exchange you can live <sup>verify · p0 · test · verification · derivation · thesis</sup>

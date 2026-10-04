@@ -3,10 +3,9 @@ id: 19
 uid: a284bc2e-6fe1-49b4-9e34-2939777c64db
 title: 'kirchhoff.hpp: the office is one netlist'
 type: apparatus
-status: review
+status: done
 milestone: v0.1
 assignee: Oddur Sigurdsson
-claimed: 2026-10-03
 labels:
 - foundation
 - thesis
@@ -17,6 +16,7 @@ depends_on:
 - 17
 created: 2026-10-03
 updated: 2026-10-03
+closed_at: 2026-10-03
 priority: p0
 role: systems
 area: circuit
@@ -52,7 +52,7 @@ mismatch on a loop), and points at the `later` item that would fix it.
 
 ## Acceptance criteria
 
-- [ ] The two resistive checks in `apps/checks/circuits.hpp` (divider, GMIN) pass; the eight dynamic ones belong to item 20, because history and the backward-Euler ticks live in the clock
+- [x] The two resistive checks in `apps/checks/circuits.hpp` (divider, GMIN) pass; the eight dynamic ones belong to item 20, because history and the backward-Euler ticks live in the clock
 - [x] Apparatus is constructed from node names only; a part holding a
       pointer or reference to another part does not compile
 - [x] The header opens with the argument for one netlist, not a summary of the code
@@ -64,3 +64,11 @@ Delivered include/laporte/kirchhoff.hpp (plan: earlier note, lost in a rebase: o
 ## 2026-10-03
 
 Landed in review, NOT closed: criterion 1 (the two resistive checks pass) needs the circuits.hpp hook-up, which is the test department's to make, with the divider and gmin expected-failure markers removed in the same change. Inspector PASS with non-blocking notes, filed as a bug. 0020 and everything downstream waits on this item closing.
+
+## 2026-10-03
+
+Hook-up: apps/checks/circuits.hpp includes kirchhoff.hpp, Resistive = laporte::Netlist; until_item markers removed from divider and gmin only (dynamic checks stay marked 20). Netlist satisfies the Solver concept as is, no relaxation. Measured: divider 6.912e-09 V (bound 1e-6), gmin 0.667 x bound; detector 19/19; make strict && verify: 26 checks, 0 failures, 17 expected to fail.
+
+## Result
+
+kirchhoff.hpp: one netlist, nodes by name, MNA with dense LU and GMIN, factorisation reused while the matrix is unchanged; the two resistive circuit checks pass against the real solver. Inspector PASS twice. Non-blocking notes filed as a bug.

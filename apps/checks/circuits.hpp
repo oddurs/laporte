@@ -120,6 +120,7 @@
 #include <string_view>
 #include <vector>
 
+#include <laporte/kirchhoff.hpp>
 #include <laporte/units.hpp>
 
 #include "verify.hpp"
@@ -173,7 +174,7 @@ concept Solver = std::constructible_from<S, std::span<const Part>> &&
 
 // The apparatus is not built. Satisfies nothing, so every measure is infinite.
 struct NotBuilt {};
-using Resistive = NotBuilt;  // item 19: the netlist
+using Resistive = laporte::Netlist;  // item 19: the netlist
 using Clocked   = NotBuilt;  // item 20: the netlist on its clock
 
 // Never let a NaN or an infinity be mistaken for a small number.
@@ -701,9 +702,9 @@ inline double m_ring()      { return measure<Clocked>(Claim::ring); }
 
 inline const bool circuits_registered =
     verify::add({.name = "circuits.divider", .source = "closed-form", .unit = "V", .published = 0.0,
-                 .tolerance = bound_divider_volts, .until_item = 19, .measure = m_divider}) &&
+                 .tolerance = bound_divider_volts, .until_item = 0, .measure = m_divider}) &&
     verify::add({.name = "circuits.gmin", .source = "closed-form", .unit = "x bound", .published = 0.0,
-                 .tolerance = 1.0, .until_item = 19, .measure = m_gmin}) &&
+                 .tolerance = 1.0, .until_item = 0, .measure = m_gmin}) &&
     verify::add({.name = "circuits.rc_step", .source = "closed-form", .unit = "ticks late", .published = 0.0,
                  .tolerance = bound_step_ticks, .until_item = 20, .measure = m_rc_step}) &&
     verify::add({.name = "circuits.rc_tau", .source = "closed-form", .unit = "of tau", .published = 0.0,
