@@ -32,13 +32,12 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`######····` 52% · 14 of 27 done
+`#####·····` 50% · 14 of 28 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
 ### planned
 
-- [ ] `0019` kirchhoff.hpp: the office is one netlist <sup>apparatus · p0 · systems · circuit · foundation · thesis</sup>
 - [ ] `0020` clock.hpp: solve, then let everything act on what it measured <sup>apparatus · p0 · systems · circuit · foundation</sup>
 - [ ] `0021` ./laporte trace: an oscilloscope in a terminal <sup>instrument · p1 · systems · instrument</sup>
 - [ ] `0023` cable.hpp: a pair of copper wires, from resistivity and gauge <sup>apparatus · p1 · transmission · cable · derivation</sup>
@@ -51,6 +50,11 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [ ] `0032` The README at v0.1: the argument, and the first derived figure <sup>prose · p1 · writer · prose</sup>
 - [ ] `0033` v0.1, read as a stranger <sup>verify · p0 · inspector · verification</sup>
 - [ ] `0109` circuits.hpp: the ring bound proves 'at least 5 ticks', not 8, and the header misquotes its own figures <sup>bug · p2 · test · verification</sup>
+- [ ] `0110` kirchhoff.hpp: label gmin and tick_rate as model parameters, stop a singular solve poisoning history, refuse zero element values <sup>bug · p2 · systems · circuit</sup>
+
+### in review
+
+- [ ] `0019` kirchhoff.hpp: the office is one netlist <sup>apparatus · p0 · systems · circuit · foundation · thesis</sup>
 
 ### done
 

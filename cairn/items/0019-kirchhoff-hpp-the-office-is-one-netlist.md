@@ -3,8 +3,10 @@ id: 19
 uid: a284bc2e-6fe1-49b4-9e34-2939777c64db
 title: 'kirchhoff.hpp: the office is one netlist'
 type: apparatus
-status: planned
+status: review
 milestone: v0.1
+assignee: Oddur Sigurdsson
+claimed: 2026-10-03
 labels:
 - foundation
 - thesis
@@ -51,6 +53,14 @@ mismatch on a loop), and points at the `later` item that would fix it.
 ## Acceptance criteria
 
 - [ ] The two resistive checks in `apps/checks/circuits.hpp` (divider, GMIN) pass; the eight dynamic ones belong to item 20, because history and the backward-Euler ticks live in the clock
-- [ ] Apparatus is constructed from node names only; a part holding a
+- [x] Apparatus is constructed from node names only; a part holding a
       pointer or reference to another part does not compile
-- [ ] The header opens with the argument for one netlist, not a summary of the code
+- [x] The header opens with the argument for one netlist, not a summary of the code
+
+## 2026-10-03
+
+Delivered include/laporte/kirchhoff.hpp (plan: earlier note, lost in a rebase: one netlist, nodes by name, canonical stamping order, MNA, dense LU with partial pivoting, GMIN 1e-12 S, trapezoidal or backward Euler per tick, factorisation reused until a contact changes; not modelled: transmission lines, loading coils, line capacitance, contact bounce, winding capacitance, anything nonlinear). Not included by main.cpp yet; compiled alone under the strict flags. The coordinator reworded criterion 1 to the two resistive checks. In a scratch hook-up of circuits.hpp (reverted; the comment there gives the two-line hook-up to the test department or inspector) divider measured 6.9e-9 V and gmin 0.67 of bound, both within bound, so criterion 1 is left unticked until the hook-up lands and the stale markers are removed. The dynamic cells also match item 14 (ac 0.134 dB, 1.77 deg). switch_kick measures 2.0 x L*I0/h against a 1.5 bound and FAILS, and switch_ring 2304 V, until item 20's eight backward-Euler ticks; tick(Method) is the door for that. Decisions: a contact starts closed; Part, Kind and factories live in laporte::kirchhoff so the check's own resistor() is not ambiguous; Netlist accepts any Wired type, so a part with a pointer for a connection does not compile.
+
+## 2026-10-03
+
+Landed in review, NOT closed: criterion 1 (the two resistive checks pass) needs the circuits.hpp hook-up, which is the test department's to make, with the divider and gmin expected-failure markers removed in the same change. Inspector PASS with non-blocking notes, filed as a bug. 0020 and everything downstream waits on this item closing.
