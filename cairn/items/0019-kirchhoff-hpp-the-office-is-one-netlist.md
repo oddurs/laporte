@@ -50,7 +50,7 @@ mismatch on a loop), and points at the `later` item that would fix it.
 
 ## Acceptance criteria
 
-- [ ] Every circuit in the solver check passes
+- [ ] The two resistive checks in `apps/checks/circuits.hpp` (divider, GMIN) pass; the eight dynamic ones belong to item 20, because history and the backward-Euler ticks live in the clock
 - [ ] Apparatus is constructed from node names only; a part holding a
       pointer or reference to another part does not compile
 - [ ] The header opens with the argument for one netlist, not a summary of the code

@@ -6,8 +6,9 @@
 
 #pragma once
 
-#include "checks/copper.hpp"
+#include "checks/circuits.hpp"
 #include "checks/determinism.hpp"
+#include "checks/copper.hpp"
 #include "checks/loop_limit.hpp"
 #include "checks/relay_timing.hpp"
 #include "checks/selftest_pass.hpp"

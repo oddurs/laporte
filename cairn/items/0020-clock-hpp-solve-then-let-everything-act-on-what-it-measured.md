@@ -45,4 +45,5 @@ for zero ticks; the header names what that hides.
 ## Acceptance criteria
 
 - [ ] The determinism check passes
+- [ ] The eight dynamic checks in `apps/checks/circuits.hpp` pass (RC, RL, AC at 20 Hz / 2.6 kHz / 3.4 kHz, the switched coil)
 - [ ] `grep -r chrono include/` is empty
