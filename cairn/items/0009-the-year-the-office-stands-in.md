@@ -3,7 +3,7 @@ id: 9
 uid: 9b7dc147-0a42-43ec-8e8b-77d1ccad86d6
 title: The year the office stands in
 type: spike
-status: planned
+status: done
 milestone: v0.1
 owner: oddurs
 labels:
@@ -11,6 +11,7 @@ labels:
 - foundation
 created: 2026-10-03
 updated: 2026-10-03
+closed_at: 2026-10-03
 priority: p0
 role: systems
 area: verification
@@ -52,3 +53,7 @@ buys nothing — the deviation is written down as an admission in the item
 that makes it.
 
 ## Answer
+
+## 2026-10-03
+
+Answer: a Bell System step-by-step office, about 1965 — the recommended option. Ratified by the owner's go-ahead on 2026-10-04 ("deploy agent team... do the entire project" after the plan listed this as the recommendation). Deviations from 1965 are admissions in the item that makes them; the sources ledger (0010) must establish what was actually in service that year, including whether the Precise Tone Plan was.
