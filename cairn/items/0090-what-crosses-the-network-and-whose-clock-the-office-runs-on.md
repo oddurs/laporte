@@ -52,3 +52,7 @@ A loopback prototype on one machine holds a call for ten minutes with
 slips counted and no audible artefacts beyond them.
 
 ## Answer
+
+## 2026-10-03
+
+Consequence of 0014: the office does NOT tick at 8 kHz; it ticks at 48 kHz. The trunk is a DS0 at 8 kHz and the boundary decimates and interpolates (a band-limiting filter, honestly named and admitted). The audio device clock drives the office at 48 kHz; the slip argument stands unchanged at the trunk.
