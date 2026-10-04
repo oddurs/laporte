@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <string_view>
 
+#include "checks/units_compile.hpp"
+
 int main(int argc, char** argv) {
     if (argc < 2 || std::string_view{argv[1]} == "help") {
         std::puts("laporte — a step-by-step telephone exchange, for no reason.\n\n"
