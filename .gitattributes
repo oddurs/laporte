@@ -1,0 +1,6 @@
+# ROADMAP.md is generated from the items. On a merge, re-derive it rather than
+# trying to reconcile two renderings of different inputs.
+ROADMAP.md merge=cairn
+
+# An item is the source rather than a rendering, so it cannot be re-derived.
+cairn/items/*.md merge=cairn

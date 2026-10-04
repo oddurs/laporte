@@ -1,0 +1,69 @@
+# The second gate, and the authoritative one. The local hook proves the tree
+# builds on the machine that wrote it; this proves it builds from a clean
+# checkout, on Linux under gcc and on macOS under clang. Two front ends
+# disagreeing about a program is almost always the program's fault.
+#
+# `cairn check` is deliberately not here: it would need a toolchain download on
+# every run to validate files the local gate already refused to let past.
+
+name: build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux, gcc
+            os: ubuntu-latest
+            cxx: g++-14
+          - name: macos, clang
+            os: macos-latest
+            cxx: clang++
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # Phreaking has no code (CLAUDE.md), and the office has no wall clock.
+      # The pattern lives here, outside the tree it searches.
+      - name: The claims that are absences
+        if: runner.os == 'Linux'
+        run: |
+          if grep -rniE 'blue_box|bluebox|whistle_attack|<chrono>' include/; then
+            echo "::error::include/ may contain none of these (rules 3 and 4)."
+            exit 1
+          fi
+          echo "Nothing found, which is the claim."
+
+      - name: Install gcc
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y g++-14
+
+      - name: The compiler
+        run: ${{ matrix.cxx }} --version
+
+      - name: Build, verify, and build again with every warning fatal
+        env:
+          CXX: ${{ matrix.cxx }}
+        run: |
+          set -eu
+          if ! ls apps/*.cpp >/dev/null 2>&1; then
+            echo "No apps/*.cpp yet: there is nothing to link."
+            exit 0
+          fi
+          make CXX="$CXX"
+          ./laporte help
+          # `verify` exists once the harness item lands; an unknown command
+          # exits 1 from the usage path, so ask the program, not the shell.
+          if ./laporte help | grep -q 'verify'; then
+            ./laporte verify
+          fi
+          make clean
+          make CXX="$CXX" strict

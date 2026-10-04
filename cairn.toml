@@ -1,0 +1,378 @@
+# cairn.toml — the schema for this project's roadmap.
+#
+#   cairn next            what is ready to work on
+#   cairn board           where everything stands
+#   cairn roadmap         the milestones, in order
+#   cairn config          show the resolved schema
+#   cairn check           validate every item against it
+#
+# The types are cornell's four activities with one word changed. This project
+# does not ship features; it builds apparatus that behaves the way the real
+# apparatus did, builds instruments to witness it, checks it against figures
+# somebody else published, and writes the argument down. A piece of work that
+# is none of those is probably not work this project wants.
+#
+# It is also worked by a team, so two fields here exist for that and nothing
+# else: `role`, which says which department picks an item up, and the `review`
+# status, which is where an item waits for the inspector. AGENTS.md says how
+# they are used.
+
+format = 5
+
+[project]
+name = "laporte"
+description = "A step-by-step telephone exchange, modelled from first principles in C++23, for no reason."
+dir = "cairn/items"
+default_type = "apparatus"
+default_status = "backlog"
+
+# ─── Item types ──────────────────────────────────────────────────────────────
+
+[[type]]
+name = "apparatus"
+icon = "~"
+color = "cyan"
+description = "a piece of equipment or physics, and the file it lives in"
+template = """
+## What it is
+
+## What it must derive
+
+<!-- House rule 2. Name the quantities that must fall out rather than be
+     typed. If nothing falls out, this is a chore, not apparatus. -->
+
+## What it may touch
+
+<!-- House rule 1. Name the nodes of the netlist this part is connected to.
+     Apparatus never holds a reference to other apparatus. -->
+
+## What is not modelled
+
+<!-- House rule 7. An unstated simplification is a lie. -->
+
+## Acceptance criteria
+
+- [ ]
+"""
+
+[[type]]
+name = "instrument"
+icon = ">"
+color = "magenta"
+description = "an app: something you point at the office to see what it did"
+template = """
+## What it witnesses
+
+## What it prints
+
+## What it may not do
+
+<!-- No instrument may reach into the apparatus to make its own job easier. -->
+
+## Acceptance criteria
+
+- [ ]
+"""
+
+[[type]]
+name = "verify"
+icon = "="
+color = "green"
+description = "a claim, and the check that earns the right to make it"
+template = """
+## The claim
+
+## Judged against
+
+<!-- A figure from docs/sources.md, by its entry. A check judged against
+     nothing outside the project is a check written to pass. -->
+
+## How it is checked
+
+## What failure looks like
+
+<!-- A test whose failure mode you cannot describe is a test you will disable. -->
+
+## Acceptance criteria
+
+- [ ]
+"""
+
+[[type]]
+name = "prose"
+icon = "*"
+color = "blue"
+description = "writing: a header's opening argument, the README, the admissions"
+template = """
+## What it has to explain
+
+## What it must not do
+
+<!-- Never restate the line beneath it. -->
+
+## Acceptance criteria
+
+- [ ]
+"""
+
+[[type]]
+name = "spike"
+icon = "?"
+color = "yellow"
+description = "a question that has to be answered before the work"
+template = """
+## Question
+
+## Why it has to be answered first
+
+## Options
+
+## What would settle it
+
+## Answer
+
+<!-- Filled in when the spike closes. A spike that closes with no answer
+     recorded was a waste of the time it took. -->
+"""
+
+[[type]]
+name = "bug"
+icon = "!"
+color = "red"
+template = """
+## What the office does
+
+## What the apparatus says it should do
+
+## Reproduction
+
+1.
+"""
+
+[[type]]
+name = "chore"
+icon = "."
+color = "gray"
+
+[[type]]
+name = "milestone"
+groups = "one"
+inverse = "scheduled"
+description = "a release: a state the repository can be read in"
+
+# ─── Statuses ────────────────────────────────────────────────────────────────
+# `review` is the one addition to cornell's list. It is active, not done: the
+# work exists and has not yet been read by somebody who did not write it.
+
+[[status]]
+name = "backlog"
+category = "open"
+color = "gray"
+
+[[status]]
+name = "planned"
+category = "open"
+color = "blue"
+
+[[status]]
+name = "doing"
+label = "in progress"
+category = "active"
+color = "yellow"
+
+[[status]]
+name = "review"
+label = "in review"
+category = "active"
+color = "magenta"
+
+[[status]]
+name = "blocked"
+category = "active"
+color = "red"
+
+[[status]]
+name = "done"
+category = "done"
+color = "green"
+
+[[status]]
+name = "dropped"
+category = "dropped"
+color = "gray"
+board = false
+
+# ─── Fields ──────────────────────────────────────────────────────────────────
+
+[[field]]
+name = "due"
+kind = "date"
+description = "when a milestone is meant to land"
+
+[[field]]
+name = "part_of"
+kind = "ref"
+target = "*"
+cardinality = "many"
+acyclic = true
+rollup = true
+inverse = "contains"
+description = "a larger piece of work this belongs to"
+
+[[field]]
+name = "priority"
+kind = "enum"
+values = ["p0", "p1", "p2", "p3"]
+default = "p2"
+column = true
+description = "p0 blocks the milestone"
+
+[[field]]
+name = "effort"
+kind = "enum"
+values = ["s", "m", "l", "xl"]
+description = "Rough size, not an estimate"
+
+# The department that picks the item up. Not a person and not a permission —
+# the director may hand anything to anyone — but the default, and the reason
+# the role views below exist. AGENTS.md describes each one.
+[[field]]
+name = "role"
+kind = "enum"
+values = [
+  "systems",       # units, the netlist, the clock, the frame, the build
+  "switching",     # relays, the dial, selectors, connectors, ringing
+  "transmission",  # copper, the voice, tones, the trunk, the channel
+  "test",          # the sources ledger, and every check, before the physics
+  "writer",        # the README, the headers' arguments, the admissions
+  "inspector",     # reads what somebody else wrote, against the house rules
+]
+column = true
+description = "Which department picks this up"
+
+# The subsystems, which are also very nearly the file list. If a piece of work
+# does not belong to one of these, either it is misconceived or the list is
+# short by one — and adding to this list is a decision, not a convenience.
+[[field]]
+name = "area"
+kind = "enum"
+values = [
+  "units",        # units.hpp — the dictionary of what this program will accept
+  "circuit",      # kirchhoff.hpp, the clock — the office as one netlist, solved
+  "cable",        # copper, gauge, length: the outside plant
+  "station",      # the telephone set: switchhook, dial, ringer, transmitter, receiver, network
+  "relay",        # coils, armatures, slugs, contacts
+  "switching",    # selectors and connectors: the two-motion switch
+  "signalling",   # tones, ringing, supervision, 2600 Hz
+  "transmission", # the voice path: bridge, hybrid, the channel, mu-law
+  "frame",        # laporte.hpp — the office as built, and the hand that uses it
+  "audio",        # wav.hpp, and the one platform edge in v0.6
+  "instrument",   # apps/
+  "verification", # the checks that earn the claims, and the sources they rest on
+  "prose",        # README, headers, the admissions
+  "build",        # the Makefile, CI, the gates, the team's own machinery
+]
+column = true
+description = "Subsystem this touches"
+
+# ─── Saved views ─────────────────────────────────────────────────────────────
+
+[[view]]
+name = "now"
+description = "What is actually being worked on"
+filter = "category=active"
+sort = "priority,id"
+
+[[view]]
+name = "next"
+description = "Planned work, ready to start"
+filter = "status=planned,blocked=false"
+sort = "priority,milestone,id"
+
+[[view]]
+name = "review"
+description = "Waiting for the inspector"
+filter = "status=review"
+sort = "priority,id"
+
+[[view]]
+name = "decisions"
+description = "Questions only the owner can settle"
+filter = "labels~decision,category!=done"
+sort = "milestone,id"
+
+[[view]]
+name = "systems"
+description = "Ready work for systems engineering"
+filter = "role=systems,status=planned,blocked=false"
+sort = "priority,milestone,id"
+
+[[view]]
+name = "switching"
+description = "Ready work for switching"
+filter = "role=switching,status=planned,blocked=false"
+sort = "priority,milestone,id"
+
+[[view]]
+name = "transmission"
+description = "Ready work for transmission"
+filter = "role=transmission,status=planned,blocked=false"
+sort = "priority,milestone,id"
+
+[[view]]
+name = "test"
+description = "Ready work for test"
+filter = "role=test,status=planned,blocked=false"
+sort = "priority,milestone,id"
+
+[[view]]
+name = "writer"
+description = "Ready work for the writer"
+filter = "role=writer,status=planned,blocked=false"
+sort = "priority,milestone,id"
+
+[[view]]
+name = "thesis"
+description = "The items the whole project exists to make true"
+filter = "labels~thesis,category!=done"
+sort = "milestone,id"
+
+[[view]]
+name = "derivations"
+description = "Things that must fall out rather than be typed in"
+filter = "labels~derivation,category!=done"
+sort = "milestone,id"
+
+[[view]]
+name = "honesty"
+description = "Admissions owed: what is not modelled, and what was fitted"
+filter = "labels~admission,category!=done"
+sort = "milestone,id"
+
+[[view]]
+name = "triage"
+description = "Items that still need a milestone, a role or a priority"
+filter = "milestone=,category!=done"
+columns = ["id", "type", "title", "created"]
+
+# ─── Hooks ───────────────────────────────────────────────────────────────────
+# A roadmap that drifts from the items is the rot cairn exists to prevent, and
+# leaving it to discipline is how it starts.
+
+[hooks]
+after-create = "cairn render -q"
+after-change = "cairn render -q"
+after-remove = "cairn render -q"
+
+# ─── Rendered roadmap ────────────────────────────────────────────────────────
+
+[render]
+target = "ROADMAP.md"
+title = "Roadmap"
+group_by = "milestone"
+include = "category!=dropped"
+checkbox = true
+show_ids = true
+progress = true
+group_by_status = true
+header = "docs/roadmap-intro.md"

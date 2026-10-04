@@ -1,0 +1,89 @@
+#!/bin/sh
+# land — merge this branch's pull request, and leave nothing behind.
+#
+# It waits for CI rather than trusting the local build, merges by rebase so
+# that main has no merge commits in it, and then removes the branch on both
+# sides and the worktree it was written in. See AGENTS.md, and `propose`,
+# which is the half of the loop that comes before this one.
+#
+#     .claude/land            wait for the checks, rebase-merge, clean up
+#     .claude/land --keep     the same, but leave the worktree on disk
+
+set -eu
+
+keep=no
+[ "${1:-}" = "--keep" ] && keep=yes
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+[ "$branch" = "main" ] && { echo "land: on main; nothing to land." >&2; exit 1; }
+
+here=$(git rev-parse --show-toplevel)
+main=$(git worktree list --porcelain | awk '/^worktree /{print $2; exit}')
+[ "$here" = "$main" ] && { echo "land: this is the main worktree." >&2; exit 1; }
+
+gh pr view --json url --jq .url >/dev/null 2>&1 || {
+    echo "land: $branch has no pull request. Run .claude/propose first." >&2
+    exit 1
+}
+
+# The authority.
+#
+# A check that has not been queued yet and a repository with no checks at all
+# look identical for the first few seconds after a push, and the first version
+# of this script could not tell them apart: it asked immediately, was told
+# there was nothing, said so, and merged. The pull request it merged went
+# green about forty seconds later, which is the good case. Waiting is the
+# whole job.
+# Wait for a check to *exist*, then hand off to --watch, which is the thing
+# that waits for it to finish.
+#
+# The discriminator is the output, not the exit status. `gh pr checks` exits
+# non-zero both while checks are pending and when one has failed, so the first
+# version of this loop — which broke on a zero exit — never broke early, burnt
+# its full timeout on every pull request, and then reported "no checks
+# appeared" for any CI slower than the timeout *and* for any CI that had
+# already failed. It said exactly that about a genuinely failing gcc build.
+#
+# Output is unambiguous: a row per check once they are registered, nothing at
+# all before that.
+waited=0
+while [ "$waited" -lt 180 ]; do
+    [ -n "$(gh pr checks 2>/dev/null)" ] && break
+    sleep 3
+    waited=$((waited + 3))
+done
+
+if [ -z "$(gh pr checks 2>/dev/null)" ]; then
+    # Not a pass. A repository that has lost its CI should stop the loop and
+    # say so, rather than discover it three merges later.
+    echo "land: no checks appeared in ${waited}s. Is .github/workflows intact?" >&2
+    exit 1
+fi
+
+gh pr checks --watch --fail-fast || {
+    echo "land: the checks did not pass. The pull request stays open." >&2
+    exit 1
+}
+
+# Not `gh pr merge --delete-branch`: that tries to check out the base branch
+# locally to clean up, and main is checked out in the main worktree, which is
+# the arrangement this whole loop is built on. So the branch is deleted here
+# instead, on both sides, explicitly.
+gh pr merge --rebase
+git push --quiet origin --delete "$branch"
+
+# Bring the main worktree up to what was just merged, by fast-forward only —
+# if that is not a fast-forward, something happened that a script should not
+# be resolving.
+git -C "$main" fetch --quiet origin main
+git -C "$main" merge --ff-only origin/main
+
+cd "$main"
+if [ "$keep" = "no" ]; then
+    git worktree remove --force "$here"
+    # -D rather than -d: a rebase-merge gives the commit a new hash upstream,
+    # so git cannot see that this branch's commits are contained in main. They
+    # are; the pull request is the record.
+    git branch -D "$branch" 2>/dev/null || true
+    echo "land: $branch and its worktree removed."
+fi

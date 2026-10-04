@@ -1,0 +1,13 @@
+laporte
+
+# What the program writes. Sound and traces are results, not sources: every one
+# is one command away from existing again, and none belong in the history.
+*.wav
+*.o
+
+.DS_Store
+compile_commands.json
+
+# Worktrees live here: one per item. Each is a full checkout that `git status`
+# in the parent would otherwise report as a pile of untracked files.
+.claude/worktrees/
