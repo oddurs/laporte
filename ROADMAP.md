@@ -72,7 +72,7 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 
 ## v0.2 — Ten pulses a second
 
-`··········` 0% · 0 of 11 done
+`#·········` 8% · 1 of 12 done
 
 A digit is not sent. A finger winds a spring, a governor lets it unwind at ten turns of a cam a second, and the cam breaks the current that many times. At the office, a magnet lifts a shaft one notch per break.
 
@@ -85,10 +85,14 @@ A digit is not sent. A finger winds a spring, a governor lets it unwind at ten t
 - [ ] `0038` Tap the hook five times and you have dialled five <sup>verify · p1 · test · verification · thesis</sup>
 - [ ] `0039` Why no number begins with one <sup>verify · p2 · test · verification · derivation</sup>
 - [ ] `0040` selector.hpp, the vertical motion: a digit is a height <sup>apparatus · p0 · switching · switching · thesis</sup>
-- [ ] `0041` wav.hpp: a sound file is a forty-four-byte header and some numbers <sup>apparatus · p1 · systems · audio</sup>
 - [ ] `0042` ./laporte dial: watch the pulses, and hear them <sup>instrument · p1 · switching · instrument</sup>
 - [ ] `0043` The dial's argument, and the README at v0.2 <sup>prose · p1 · writer · prose</sup>
 - [ ] `0044` v0.2, read as a stranger <sup>verify · p0 · inspector · verification</sup>
+- [ ] `0111` wav.hpp: mark refusals \[\[nodiscard\]\], don't leave a truncated file on a failed write, and use a unique temp name in its check <sup>bug · p3 · systems · audio</sup>
+
+### done
+
+- [x] `0041` wav.hpp: a sound file is a forty-four-byte header and some numbers <sup>apparatus · p1 · systems · audio</sup>
 
 ## v0.3 — A number is a set of directions
 
