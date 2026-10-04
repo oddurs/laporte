@@ -70,7 +70,9 @@ gh pr checks --watch --fail-fast || {
 # the arrangement this whole loop is built on. So the branch is deleted here
 # instead, on both sides, explicitly.
 gh pr merge --rebase
-git push --quiet origin --delete "$branch"
+# The repository deletes merged branches itself (delete-branch-on-merge), so
+# the ref may already be gone; a missing ref is the outcome we wanted.
+git push --quiet origin --delete "$branch" 2>/dev/null || true
 
 # Bring the main worktree up to what was just merged, by fast-forward only —
 # if that is not a fast-forward, something happened that a script should not

@@ -3,7 +3,7 @@ id: 11
 uid: 832658b5-b98e-40a7-b411-25aba14b5909
 title: The repository, the build, and the two gates
 type: chore
-status: doing
+status: done
 milestone: v0.1
 labels:
 - foundation
@@ -11,6 +11,7 @@ depends_on:
 - 8
 created: 2026-10-03
 updated: 2026-10-03
+closed_at: 2026-10-03
 priority: p0
 role: systems
 area: build
@@ -36,8 +37,8 @@ rename; do not reinvent.
 
 - [x] `make && ./laporte` builds and prints a usage line on a clean clone
 - [x] A commit with a broken build is refused by the local gate
-- [ ] CI runs on a pull request and fails on a warning under `-Werror`
-- [ ] `.claude/propose` and `.claude/land` work end to end on a trivial PR
+- [x] CI runs on a pull request and fails on a warning under `-Werror`
+- [x] `.claude/propose` and `.claude/land` work end to end on a trivial PR
 
 ## 2026-10-03
 
@@ -50,3 +51,11 @@ Reopened by the director: criteria 2-4 were ticked before they were demonstrated
 ## 2026-10-03
 
 Criterion 2 demonstrated 2026-10-04: with a syntactically broken apps/broken.cpp in the tree, the gate exited 2 with 'Refusing the commit: the tree does not build', and in the live Claude Code harness refused the real command. Ticked. 3 and 4 remain: 4 is demonstrated by landing PR #1 through propose and land; 3 needs a deliberately warning-laden throwaway PR that CI must reject.
+
+## 2026-10-03
+
+Criterion 3 demonstrated 2026-10-04: throwaway PR #2 added an unused variable; the macos/clang job passed the plain build and failed the strict rebuild (-Wunused-variable under -Werror). Closed, never merged. Criterion 4 demonstrated by PR #1: propose pushed and opened it, land waited for both CI jobs and rebase-merged it. land then failed on deleting a remote branch GitHub had already deleted; fixed in this change by tolerating a missing ref.
+
+## Result
+
+main builds green on gcc and clang; the commit gate refuses a broken tree; strict CI rejects a warning; propose and land carried PR #1 end to end.

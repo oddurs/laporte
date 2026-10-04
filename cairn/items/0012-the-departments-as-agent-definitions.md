@@ -3,8 +3,10 @@ id: 12
 uid: 2268337d-eac7-4173-a5ed-ca232014498b
 title: The departments, as agent definitions
 type: chore
-status: planned
+status: review
 milestone: v0.1
+assignee: Oddur Sigurdsson
+claimed: 2026-10-03
 labels:
 - foundation
 depends_on:
@@ -31,7 +33,11 @@ They say only what is different about being in that department.
 
 ## Acceptance criteria
 
-- [ ] Six definitions, each under a page
-- [ ] The inspector cannot edit files
+- [x] Six definitions, each under a page
+- [x] The inspector cannot edit files
 - [ ] A dry run: the director hands a trivial chore to `systems` in a
       worktree, the inspector reviews it, and it lands
+
+## 2026-10-03
+
+Six definitions written under .claude/agents/, each under a page; the inspector's tool list has no Write or Edit. Criterion 3 (a dry run through a department and the inspector) is not yet true: custom subagent types are only discovered at session start, so this session drives the departments with general-purpose agents given the same brief. It is ticked once a session that loaded these definitions has run an item through them. Also in this change: land tolerates GitHub having already deleted the merged branch.
