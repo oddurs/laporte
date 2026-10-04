@@ -3,10 +3,9 @@ id: 13
 uid: a8763418-64dc-4809-ba0c-cbb334444a5f
 title: How the office is solved
 type: spike
-status: review
+status: done
 milestone: v0.1
 assignee: Oddur Sigurdsson
-claimed: 2026-10-03
 owner: oddurs
 labels:
 - decision
@@ -14,6 +13,7 @@ labels:
 - thesis
 created: 2026-10-03
 updated: 2026-10-03
+closed_at: 2026-10-03
 priority: p0
 role: systems
 area: circuit
@@ -214,3 +214,7 @@ nothing here contradicts; the second contradicts rule 1.
 ## 2026-10-03
 
 Director's disposition (2026-10-04), provisional until the owner reads it: ADOPTED on the owner's blanket delegation. MNA on one netlist, dense LU, GMIN to ground, with the factorisation reused while the matrix is unchanged. Inspector PASS after one return.
+
+## Result
+
+MNA on one netlist, dense LU, GMIN, factorisation reused. Provisional until the owner reads it. Inspector PASS after one return.
