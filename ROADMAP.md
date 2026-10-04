@@ -32,7 +32,7 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`#####·····` 46% · 12 of 26 done
+`#####·····` 50% · 13 of 26 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
@@ -43,7 +43,6 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [ ] `0020` clock.hpp: solve, then let everything act on what it measured <sup>apparatus · p0 · systems · circuit · foundation</sup>
 - [ ] `0021` ./laporte trace: an oscilloscope in a terminal <sup>instrument · p1 · systems · instrument</sup>
 - [ ] `0023` cable.hpp: a pair of copper wires, from resistivity and gauge <sup>apparatus · p1 · transmission · cable · derivation</sup>
-- [ ] `0024` The relay operates and releases where its own numbers say it should <sup>verify · p1 · test · verification</sup>
 - [ ] `0025` relay.hpp: a coil, an armature, a slug, and contacts <sup>apparatus · p0 · switching · relay · foundation</sup>
 - [ ] `0026` The battery and the feed: why the office is at minus forty-eight volts <sup>apparatus · p1 · switching · signalling · derivation · admission</sup>
 - [ ] `0027` The switchhook, and the telephone as a resistance <sup>apparatus · p1 · switching · station</sup>
@@ -66,6 +65,7 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [x] `0016` ./laporte verify: the harness, and checks that are allowed to fail <sup>instrument · p0 · systems · verification · foundation</sup>
 - [x] `0018` Determinism: the same office twice, in any order <sup>verify · p1 · test · verification · foundation</sup>
 - [x] `0022` Copper, derived from resistivity and checked against the published table <sup>verify · p1 · test · verification · derivation</sup>
+- [x] `0024` The relay operates and releases where its own numbers say it should <sup>verify · p1 · test · verification</sup>
 - [x] `0030` How far from the exchange you can live <sup>verify · p0 · test · verification · derivation · thesis</sup>
 
 ## v0.2 — Ten pulses a second
