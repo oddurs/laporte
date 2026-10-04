@@ -32,18 +32,16 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`####······` 35% · 9 of 26 done
+`#####·····` 42% · 11 of 26 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
 ### planned
 
 - [ ] `0017` Kirchhoff, checked against circuits whose answers are known <sup>verify · p0 · test · verification · foundation</sup>
-- [ ] `0018` Determinism: the same office twice, in any order <sup>verify · p1 · test · verification · foundation</sup>
 - [ ] `0019` kirchhoff.hpp: the office is one netlist <sup>apparatus · p0 · systems · circuit · foundation · thesis</sup>
 - [ ] `0020` clock.hpp: solve, then let everything act on what it measured <sup>apparatus · p0 · systems · circuit · foundation</sup>
 - [ ] `0021` ./laporte trace: an oscilloscope in a terminal <sup>instrument · p1 · systems · instrument</sup>
-- [ ] `0022` Copper, derived from resistivity and checked against the published table <sup>verify · p1 · test · verification · derivation</sup>
 - [ ] `0023` cable.hpp: a pair of copper wires, from resistivity and gauge <sup>apparatus · p1 · transmission · cable · derivation</sup>
 - [ ] `0024` The relay operates and releases where its own numbers say it should <sup>verify · p1 · test · verification</sup>
 - [ ] `0025` relay.hpp: a coil, an armature, a slug, and contacts <sup>apparatus · p0 · switching · relay · foundation</sup>
@@ -67,6 +65,8 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [x] `0014` One clock for everything <sup>spike · p0 · systems · circuit · decision · foundation</sup>
 - [x] `0015` units.hpp: the dictionary of what this program will accept <sup>apparatus · p0 · systems · units · foundation</sup>
 - [x] `0016` ./laporte verify: the harness, and checks that are allowed to fail <sup>instrument · p0 · systems · verification · foundation</sup>
+- [x] `0018` Determinism: the same office twice, in any order <sup>verify · p1 · test · verification · foundation</sup>
+- [x] `0022` Copper, derived from resistivity and checked against the published table <sup>verify · p1 · test · verification · derivation</sup>
 
 ## v0.2 — Ten pulses a second
 
