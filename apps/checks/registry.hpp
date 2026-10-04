@@ -13,3 +13,4 @@
 #include "checks/relay_timing.hpp"
 #include "checks/selftest_pass.hpp"
 #include "checks/selftest_xfail.hpp"
+#include "checks/wav_roundtrip.hpp"
