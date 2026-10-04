@@ -32,7 +32,7 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`#####·····` 42% · 11 of 26 done
+`#####·····` 46% · 12 of 26 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
@@ -49,7 +49,6 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [ ] `0027` The switchhook, and the telephone as a resistance <sup>apparatus · p1 · switching · station</sup>
 - [ ] `0028` hand.hpp: what a hand can do to a telephone <sup>apparatus · p1 · systems · frame · thesis</sup>
 - [ ] `0029` laporte.hpp, first draft: a battery, a relay, a pair, a telephone <sup>apparatus · p1 · systems · frame</sup>
-- [ ] `0030` How far from the exchange you can live <sup>verify · p0 · test · verification · derivation · thesis</sup>
 - [ ] `0031` ./laporte loop: the operating margin of a line <sup>instrument · p1 · switching · instrument · derivation</sup>
 - [ ] `0032` The README at v0.1: the argument, and the first derived figure <sup>prose · p1 · writer · prose</sup>
 - [ ] `0033` v0.1, read as a stranger <sup>verify · p0 · inspector · verification</sup>
@@ -67,6 +66,7 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [x] `0016` ./laporte verify: the harness, and checks that are allowed to fail <sup>instrument · p0 · systems · verification · foundation</sup>
 - [x] `0018` Determinism: the same office twice, in any order <sup>verify · p1 · test · verification · foundation</sup>
 - [x] `0022` Copper, derived from resistivity and checked against the published table <sup>verify · p1 · test · verification · derivation</sup>
+- [x] `0030` How far from the exchange you can live <sup>verify · p0 · test · verification · derivation · thesis</sup>
 
 ## v0.2 — Ten pulses a second
 
