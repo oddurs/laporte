@@ -7,5 +7,6 @@
 #pragma once
 
 #include "checks/determinism.hpp"
+#include "checks/copper.hpp"
 #include "checks/selftest_pass.hpp"
 #include "checks/selftest_xfail.hpp"
