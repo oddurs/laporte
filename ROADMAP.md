@@ -32,7 +32,7 @@ works the roadmap is in `AGENTS.md`.
 
 ## v0.1 — A battery and two wires
 
-`##········` 12% · 3 of 26 done
+`##········` 15% · 4 of 26 done
 
 A telephone line is a battery, a relay and a pair of copper wires, and the whole of supervision — is anybody there? — is whether current flows.
 
@@ -61,15 +61,12 @@ A telephone line is a battery, a relay and a pair of copper wires, and the whole
 - [ ] `0032` The README at v0.1: the argument, and the first derived figure <sup>prose · p1 · writer · prose</sup>
 - [ ] `0033` v0.1, read as a stranger <sup>verify · p0 · inspector · verification</sup>
 
-### in review
-
-- [ ] `0012` The departments, as agent definitions <sup>chore · p0 · systems · build · foundation</sup>
-
 ### done
 
 - [x] `0008` The name, and where the repository lives <sup>spike · p0 · systems · build · decision · foundation</sup>
 - [x] `0009` The year the office stands in <sup>spike · p0 · systems · verification · decision · foundation</sup>
 - [x] `0011` The repository, the build, and the two gates <sup>chore · p0 · systems · build · foundation</sup>
+- [x] `0012` The departments, as agent definitions <sup>chore · p0 · systems · build · foundation</sup>
 
 ## v0.2 — Ten pulses a second
 
